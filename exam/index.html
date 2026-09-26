@@ -1,1 +1,207 @@
-The requested file reference is not currently visible. Use files.search or files.list to rediscover the file, then retry with a returned ref_id or file_id.
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#0f3263">
+<title>ระบบสอบออนไลน์ ม.4 | การเขียนโปรแกรมภาษา C</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+<style>
+:root{--navy:#0c376d;--blue:#1769aa;--blue2:#2b82d5;--bg:#f2f7fd;--ink:#15253b;--muted:#68798f;--line:#d9e5f2;--green:#16825b;--orange:#f2a11f;--red:#bb3f3a;--white:#fff;--shadow:0 14px 36px rgba(25,59,97,.09)}*{box-sizing:border-box}body{margin:0;font-family:system-ui,-apple-system,"Noto Sans Thai",Tahoma,sans-serif;background:linear-gradient(180deg,#eaf4ff,#f5f8fc 340px);color:var(--ink)}button,input,select{font:inherit}.hidden{display:none!important}.view{display:none}.view.active{display:block}.topbar{min-height:96px;background:linear-gradient(120deg,#0c376d,#1674b8);color:#fff;display:flex;align-items:center;justify-content:space-between;padding:12px max(18px,calc((100vw - 1240px)/2));gap:14px}.brand{display:flex;align-items:center;gap:14px}.logo{width:70px;height:70px;object-fit:contain;background:#fff;border-radius:15px;padding:5px}.brand h1{margin:0;font-size:clamp(21px,4vw,30px)}.brand p{margin:3px 0 0;color:#d8ebfa;font-size:13px}main{max-width:1240px;margin:auto;padding:34px 18px 70px}.hero{text-align:center;max-width:850px;margin:8px auto 25px}.hero h2{font-size:clamp(29px,5vw,48px);margin:0;color:var(--navy)}.hero p,.muted{color:var(--muted)}.eyebrow{font-size:12px;letter-spacing:.16em;font-weight:900;color:var(--blue);margin-bottom:7px}.card{background:#fff;border:1px solid var(--line);border-radius:20px;box-shadow:var(--shadow);padding:23px}.login-card{max-width:690px;margin:auto}.grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:15px}.span-2{grid-column:1/-1}label{font-size:13px;font-weight:800;color:#44566e}input,select{width:100%;padding:12px 13px;border:1px solid #bdcde0;border-radius:11px;margin-top:6px;background:#fff;color:var(--ink);outline:none}input:focus,select:focus{border-color:#4d8bd0;box-shadow:0 0 0 3px rgba(77,139,208,.12)}.btn{border:0;border-radius:11px;padding:11px 16px;font-weight:850;cursor:pointer}.primary{background:linear-gradient(120deg,#15539f,#2576cd);color:#fff}.success{background:linear-gradient(120deg,#11764f,#169966);color:#fff}.ghost{background:#fff;color:var(--navy);border:1px solid #c8d7e8}.ghost-light{background:rgba(255,255,255,.11);color:#fff;border:1px solid rgba(255,255,255,.42)}.danger{background:#fff0ef;color:#a43832;border:1px solid #efc2be}.submit{background:linear-gradient(120deg,#b33b37,#df5147);color:#fff;width:100%;margin-top:14px;padding:14px}.big{width:100%;padding:14px}.full{width:100%;margin-top:12px}.message{min-height:19px;margin-top:12px;font-size:13px}.message.error{color:var(--red)}.message.success{color:var(--green);font-weight:800}.note{margin-top:17px;background:#eef6ff;border-left:4px solid #3c7fc6;padding:12px 14px;border-radius:9px;color:#50647e;font-size:13px}.exam-structure{display:grid;grid-template-columns:repeat(3,1fr);gap:9px;margin-bottom:18px}.exam-structure div{text-align:center;border:1px solid #e1eaf4;border-radius:13px;padding:12px;background:#f8fbff}.exam-structure b{display:block;font-size:25px;color:var(--navy)}.exam-structure span{font-size:11px;color:var(--muted)}.section-head,.dashboard-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:18px}.section-head h2,.dashboard-head h2{margin:0;color:var(--navy)}.identity{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:18px}.identity div{background:#f6faff;border:1px solid #e1ebf5;border-radius:13px;padding:13px}.identity b{display:block;color:var(--navy);font-size:17px}.identity span{font-size:11px;color:var(--muted)}.rules{background:#f9fbfd;border:1px solid #e1e9f2;border-radius:14px;padding:16px;margin-bottom:17px}.rules h3{margin:0 0 8px;color:var(--navy)}.rules li{margin:6px 0;color:#506077}.exam-layout.active{display:grid;grid-template-columns:300px minmax(0,1fr);gap:16px;align-items:start}.exam-side{position:sticky;top:16px}.student-mini{padding-bottom:13px;border-bottom:1px solid var(--line)}.student-mini b{color:var(--navy)}.progress-wrap{margin:14px 0}.progress-line{height:10px;background:#e5edf6;border-radius:99px;overflow:hidden}.progress-line i{display:block;height:100%;background:linear-gradient(90deg,#1675c4,#1d9a6d);width:0}.progress-wrap span{display:block;text-align:right;font-size:11px;color:var(--muted);margin-top:5px}.question-nav{display:grid;grid-template-columns:repeat(5,1fr);gap:7px}.qnav{height:39px;border-radius:9px;border:1px solid #d6e2ef;background:#fff;color:#607088;font-weight:800;cursor:pointer}.qnav.answered{background:#e5f7ef;color:#11704b;border-color:#b9e4d0}.qnav.current{outline:3px solid rgba(31,112,197,.2);border-color:#2879c5;color:var(--navy)}.legend{display:grid;gap:5px;margin-top:13px;font-size:11px;color:var(--muted)}.legend span{display:flex;align-items:center;gap:7px}.dot{width:11px;height:11px;border-radius:50%;border:1px solid #ccd8e5}.dot.answered{background:#bfe8d5}.dot.current{background:#4d8dcd}.dot.blank{background:#fff}.question-card{min-height:520px}.question-meta{display:flex;flex-wrap:wrap;gap:8px;align-items:center;color:var(--muted);font-size:12px}.question-meta>:first-child{font-size:16px;font-weight:900;color:var(--navy)}.topic{background:#eaf3ff;color:#1a67aa;padding:4px 8px;border-radius:999px}.question-card h2{font-size:clamp(20px,3vw,27px);line-height:1.55;color:#18375c}.code{background:#152235;color:#f5f8fc;border-radius:14px;padding:18px;overflow:auto;font:15px/1.65 ui-monospace,SFMono-Regular,Menlo,monospace}.choices{display:grid;gap:10px}.choice{display:flex;align-items:flex-start;gap:11px;padding:13px 15px;border:1px solid #dce6f1;border-radius:13px;cursor:pointer;background:#fff;transition:.15s}.choice:hover{border-color:#7eaddc;background:#f7fbff}.choice.selected{border-color:#2878c4;background:#eef6ff;box-shadow:0 0 0 2px rgba(40,120,196,.08)}.choice input{width:auto;margin:3px 0 0}.choice-key{font-weight:900;color:var(--navy)}.fill-wrap label{font-size:15px}.fill-input{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-size:18px;font-weight:800;padding:14px}.save-state{min-height:19px;font-size:12px;color:var(--muted);margin-top:12px}.question-actions{display:flex;justify-content:space-between;gap:10px;margin-top:25px}.result-card{max-width:660px;margin:40px auto;text-align:center}.result-icon{width:76px;height:76px;border-radius:50%;background:#e4f6ee;color:var(--green);display:grid;place-items:center;margin:auto;font-size:40px;font-weight:900}.result-card h2{color:var(--navy)}.score-box{display:flex;justify-content:center;gap:12px;flex-wrap:wrap;margin:22px 0}.score-box div{min-width:145px;background:#f5f9fd;border:1px solid #e0e9f3;border-radius:14px;padding:14px}.score-box b{font-size:30px;color:var(--navy);display:block}.score-box span{font-size:12px;color:var(--muted)}.head-actions{display:flex;gap:8px;flex-wrap:wrap}.kpi-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-bottom:16px}.kpi{background:#fff;border:1px solid var(--line);border-radius:17px;padding:18px;box-shadow:0 8px 22px rgba(28,59,94,.05)}.kpi b{display:block;font-size:32px;color:var(--navy)}.kpi span{font-size:12px;color:var(--muted)}.chart-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px}.chart-card h3{margin:0;color:var(--navy)}.chart-card p{margin:3px 0 10px;color:var(--muted);font-size:12px}.chart-box{height:330px;position:relative}.tabs{display:flex;gap:7px;overflow:auto;margin:18px 0 11px}.tab{white-space:nowrap;border:1px solid var(--line);background:#fff;color:#42556d;border-radius:10px;padding:10px 14px;font-weight:800;cursor:pointer}.tab.active{background:var(--navy);color:#fff}.tab-panel{display:none}.tab-panel.active{display:block}.table-card{padding:0;overflow:hidden}.toolbar{display:grid;grid-template-columns:150px 170px 1fr;gap:9px;padding:12px}.table-wrap{overflow:auto}table{width:100%;border-collapse:collapse;min-width:900px}th,td{padding:11px 12px;text-align:left;border-bottom:1px solid #e6edf5;font-size:13px;vertical-align:top}th{background:#f2f7fc;color:#40536a;position:sticky;top:0;z-index:1}.badge{display:inline-block;padding:4px 8px;border-radius:999px;font-size:11px;font-weight:850}.badge.not_started{background:#eef1f5;color:#647184}.badge.started{background:#fff0d7;color:#906000}.badge.submitted{background:#e5f7ef;color:#126c49}.detail-btn{border:1px solid #cbd9e8;background:#fff;color:var(--navy);border-radius:8px;padding:6px 9px;font-weight:800;cursor:pointer}.settings-card{max-width:760px}.setting-row{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:15px 0;border-bottom:1px solid var(--line)}.setting-row p{margin:3px 0 0;color:var(--muted);font-size:12px}.switch input{display:none}.switch span{display:block;width:54px;height:30px;background:#c7d2df;border-radius:99px;position:relative;cursor:pointer}.switch span:after{content:"";position:absolute;width:24px;height:24px;left:3px;top:3px;background:#fff;border-radius:50%;transition:.2s}.switch input:checked+span{background:#16825b}.switch input:checked+span:after{left:27px}.modal{position:fixed;inset:0;background:rgba(8,25,44,.65);z-index:50;display:flex;align-items:center;justify-content:center;padding:16px}.modal.hidden{display:none}.modal-card{background:#fff;border-radius:20px;width:min(1050px,100%);max-height:92vh;overflow:auto;padding:20px}.modal-head{display:flex;justify-content:space-between;gap:10px}.modal-head h3{margin:0;color:var(--navy)}.modal-summary{margin:12px 0;background:#eef6ff;border:1px solid #d8e7f7;border-radius:12px;padding:12px}.answer-report{display:grid;gap:10px}.report-item{border:1px solid #dfe8f2;border-radius:12px;padding:13px}.report-item.correct{border-left:5px solid var(--green)}.report-item.wrong{border-left:5px solid var(--red)}.report-item h4{margin:0 0 7px;color:var(--navy)}.report-answer{font-size:13px;color:#506179}.report-answer b{color:var(--ink)}footer{text-align:center;color:#7b8999;font-size:12px;padding:0 16px 28px}@media(max-width:950px){.exam-layout.active{grid-template-columns:1fr}.exam-side{position:static}.question-nav{grid-template-columns:repeat(10,1fr)}.chart-grid{grid-template-columns:1fr}.kpi-grid{grid-template-columns:repeat(2,1fr)}}@media(max-width:720px){.topbar{padding:10px 12px}.logo{width:58px;height:58px}.brand p{display:none}main{padding:25px 12px 50px}.grid{grid-template-columns:1fr}.span-2{grid-column:auto}.section-head,.dashboard-head{flex-direction:column}.identity{grid-template-columns:repeat(2,1fr)}.question-nav{grid-template-columns:repeat(7,1fr)}.toolbar{grid-template-columns:1fr}.head-actions{width:100%}.chart-box{height:300px}}@media(max-width:430px){.kpi-grid{grid-template-columns:1fr}.exam-structure{grid-template-columns:1fr}.question-nav{grid-template-columns:repeat(5,1fr)}.identity{grid-template-columns:1fr}.question-actions{flex-direction:column}.question-actions .btn{width:100%}}
+
+
+.exam-structure.four{grid-template-columns:repeat(4,1fr)}
+.exam-timer{margin:14px 0;padding:14px;border:1px solid #cfe0f2;border-radius:14px;background:linear-gradient(135deg,#f7fbff,#edf6ff);text-align:center;transition:.2s}.exam-timer span{display:block;font-size:11px;color:var(--muted);font-weight:800}.exam-timer b{display:block;font:900 28px/1.2 ui-monospace,SFMono-Regular,Menlo,monospace;color:var(--navy);margin:4px 0}.exam-timer small{display:block;color:#47709c;font-size:11px}.exam-timer.overtime{background:#fff4e6;border-color:#f2b24e}.exam-timer.overtime b{color:#b96000}.exam-timer.overtime small{color:#9a5700;font-weight:800}
+.time-warning-card{width:min(520px,100%);text-align:center;padding:28px}.time-warning-icon{font-size:52px}.time-warning-card h3{color:#a25900;font-size:25px;margin:8px 0}.time-warning-card p{color:#5d6b7d;line-height:1.7}.time-policy{background:#fff7e8;border:1px solid #f0cf90;border-radius:13px;padding:14px 15px;margin:12px 0 6px}.time-policy b{color:#8a5700}.time-policy p{margin:4px 0 0;color:#745f3e;font-size:12px}
+.overtime-text{color:#b45c00;font-weight:850}.time-ok{color:#19704f}.time-cell{font-family:ui-monospace,SFMono-Regular,Menlo,monospace;font-weight:750;white-space:nowrap}
+@media(max-width:720px){.exam-structure.four{grid-template-columns:repeat(2,1fr)}}
+
+</style>
+</head>
+<body>
+<header class="topbar">
+  <div class="brand">
+    <img src="../school-logo.png" class="logo" alt="ตราโรงเรียน">
+    <div><h1>ระบบสอบออนไลน์ ม.4</h1><p>การเขียนโปรแกรมภาษา C · คะแนนเต็ม 20 คะแนน</p></div>
+  </div>
+  <button id="adminEntryBtn" class="btn ghost-light">สำหรับ Admin</button>
+</header>
+
+<main>
+<section id="loginView" class="view active">
+  <div class="hero">
+    <div class="eyebrow">ONLINE EXAM · M.4</div>
+    <h2>แบบทดสอบการเขียนโปรแกรมภาษา C</h2>
+    <p>ปรนัย 30 ข้อ × 0.5 คะแนน = 15 คะแนน และเติมคำในโค้ด 5 ข้อ × 1 คะแนน = 5 คะแนน</p>
+  </div>
+  <div class="card login-card">
+    <div class="exam-structure four">
+      <div><b>35</b><span>ข้อทั้งหมด</span></div><div><b>20</b><span>คะแนนเต็ม</span></div><div><b>60</b><span>นาทีมาตรฐาน</span></div><div><b>ม.4</b><span>ระดับชั้น</span></div>
+    </div>
+    <form id="loginForm" class="grid">
+      <label>ห้อง<select id="loginRoom" required></select></label>
+      <label>เลขประจำตัวนักเรียน<input id="loginStudentNumber" inputmode="numeric" autocomplete="off" required placeholder="กรอกเลขประจำตัว"></label>
+      <button class="btn primary span-2" type="submit">เข้าสู่ระบบสอบ</button>
+    </form>
+    <div id="loginMsg" class="message"></div>
+    <div class="note">ระบบจะตรวจสอบข้อมูลจากรายชื่อนักเรียน ม.4 และบันทึกชื่อ–สกุล เลขประจำตัว เลขที่ และห้องโดยอัตโนมัติ</div>
+  </div>
+</section>
+
+<section id="startView" class="view">
+  <div class="section-head"><div><div class="eyebrow">READY</div><h2>ยืนยันข้อมูลก่อนเริ่มสอบ</h2></div><button id="studentLogoutBtn" class="btn ghost">ออกจากระบบ</button></div>
+  <div class="card start-card">
+    <div id="identityCard" class="identity"></div>
+    <div class="rules">
+      <h3>รายละเอียดข้อสอบ</h3>
+      <ul>
+        <li>ส่วนที่ 1 ปรนัย 30 ข้อ ข้อละ 0.5 คะแนน รวม 15 คะแนน</li>
+        <li>ส่วนที่ 2 เติมคำในโค้ด 5 ข้อ ข้อละ 1 คะแนน รวม 5 คะแนน</li>
+        <li><b>เวลามาตรฐาน 60 นาที</b> ระบบจะแจ้งเตือนเมื่อครบเวลา แต่ยังสามารถทำข้อสอบต่อได้</li>
+        <li>หากใช้เวลาเกิน 60 นาที ระบบจะบันทึกเวลาที่เกินไว้ในรายงานสำหรับ Admin</li>
+        <li>ข้อปรนัยจะสลับลำดับข้อและตัวเลือกแตกต่างกันในแต่ละคน ส่วนข้อเติมคำในโค้ดจะเรียงเหมือนกันทุกคน</li>
+        <li>คำตอบจะบันทึกอัตโนมัติ สามารถย้อนกลับมาแก้ไขก่อนกดส่งข้อสอบ</li>
+        <li>เมื่อตัดสินใจกดส่งข้อสอบแล้ว จะไม่สามารถแก้ไขหรือเข้าสอบซ้ำได้</li>
+      </ul>
+    </div>
+    <button id="startExamBtn" class="btn primary big">เริ่มทำข้อสอบ</button>
+    <div id="startMsg" class="message"></div>
+  </div>
+</section>
+
+<section id="examView" class="view exam-layout">
+  <aside class="exam-side card">
+    <div class="student-mini" id="studentMini"></div>
+    <div id="examTimer" class="exam-timer">
+      <span>เวลาที่ใช้ในการสอบ</span>
+      <b id="timerText">00:00:00</b>
+      <small id="timerNote">เวลามาตรฐาน 60 นาที</small>
+    </div>
+    <div class="progress-wrap"><div class="progress-line"><i id="progressBar"></i></div><span id="progressText"></span></div>
+    <div id="questionNav" class="question-nav"></div>
+    <div class="legend"><span><i class="dot answered"></i>ตอบแล้ว</span><span><i class="dot current"></i>ข้อปัจจุบัน</span><span><i class="dot blank"></i>ยังไม่ตอบ</span></div>
+  </aside>
+  <div class="exam-main">
+    <div class="card question-card">
+      <div class="question-meta"><span id="questionNumber"></span><span id="questionTopic" class="topic"></span><span id="questionPoints"></span></div>
+      <h2 id="questionPrompt"></h2>
+      <pre id="questionCode" class="code hidden"></pre>
+      <div id="answerArea"></div>
+      <div id="saveState" class="save-state"></div>
+      <div class="question-actions"><button id="prevBtn" class="btn ghost">← ข้อก่อนหน้า</button><button id="nextBtn" class="btn primary">ข้อต่อไป →</button></div>
+    </div>
+    <button id="submitExamBtn" class="btn submit">ส่งข้อสอบ</button>
+  </div>
+</section>
+
+<section id="resultView" class="view">
+  <div class="result-card card">
+    <div class="result-icon">✓</div>
+    <div class="eyebrow">SUBMITTED</div>
+    <h2>ส่งข้อสอบเรียบร้อยแล้ว</h2>
+    <p id="resultIdentity"></p>
+    <div id="scoreBox" class="score-box"></div>
+    <p class="muted">ระบบบันทึกคำตอบและผลคะแนนเรียบร้อยแล้ว</p>
+    <button id="resultLogoutBtn" class="btn primary">กลับหน้าหลัก</button>
+  </div>
+</section>
+
+<section id="adminLoginView" class="view">
+  <div class="section-head"><div><div class="eyebrow">ADMIN</div><h2>เข้าสู่ระบบรายงานผล</h2></div><button id="backHomeBtn" class="btn ghost">กลับหน้าหลัก</button></div>
+  <div class="card login-card"><form id="adminLoginForm"><label>รหัส Admin<input id="adminPin" type="password" required></label><button class="btn primary full" type="submit">เข้าสู่ Dashboard</button></form><div id="adminLoginMsg" class="message"></div></div>
+</section>
+
+<section id="adminView" class="view">
+  <div class="dashboard-head">
+    <div><div class="eyebrow">ADMIN DASHBOARD</div><h2>รายงานผลการสอบ ม.4</h2><p id="adminUpdated" class="muted"></p></div>
+    <div class="head-actions"><button id="refreshAdminBtn" class="btn ghost">รีเฟรช</button><button id="exportBtn" class="btn success">ส่งออก Excel</button><button id="adminLogoutBtn" class="btn danger">ออกจากระบบ</button></div>
+  </div>
+
+  <div id="adminKpis" class="kpi-grid"></div>
+  <div class="chart-grid">
+    <div class="card chart-card"><h3>สถานะการเข้าสอบรายห้อง</h3><p>ยังไม่เริ่ม / กำลังทำ / ส่งแล้ว</p><div class="chart-box"><canvas id="roomChart"></canvas></div></div>
+    <div class="card chart-card"><h3>การกระจายคะแนน</h3><p>จำนวนผู้เข้าสอบในแต่ละช่วงคะแนน</p><div class="chart-box"><canvas id="scoreChart"></canvas></div></div>
+  </div>
+
+  <div class="tabs">
+    <button class="tab active" data-tab="students">ผลรายบุคคล</button>
+    <button class="tab" data-tab="rooms">สรุปรายห้อง</button>
+    <button class="tab" data-tab="questions">สถิติรายข้อ</button>
+    <button class="tab" data-tab="settings">ตั้งค่าการสอบ</button>
+  </div>
+
+  <div id="studentsTab" class="tab-panel active card table-card">
+    <div class="toolbar"><select id="studentRoomFilter"><option value="">ทุกห้อง</option></select><select id="studentStatusFilter"><option value="">ทุกสถานะ</option><option value="not_started">ยังไม่เริ่ม</option><option value="started">กำลังทำ</option><option value="submitted">ส่งแล้ว</option></select><input id="studentSearch" placeholder="ค้นหาชื่อ / เลขประจำตัว"></div>
+    <div class="table-wrap"><table><thead><tr><th>ห้อง</th><th>เลขที่</th><th>เลขประจำตัว</th><th>ชื่อ–สกุล</th><th>สถานะ</th><th>เวลาที่ใช้</th><th>เกินเวลา</th><th>ปรนัย</th><th>เติมคำ</th><th>รวม /20</th><th>รายละเอียด</th></tr></thead><tbody id="studentsBody"></tbody></table></div>
+  </div>
+
+  <div id="roomsTab" class="tab-panel card table-card"><div class="table-wrap"><table><thead><tr><th>ห้อง</th><th>ทั้งหมด</th><th>ยังไม่เริ่ม</th><th>กำลังทำ</th><th>ส่งแล้ว</th><th>เกินเวลา</th><th>คะแนนเฉลี่ย</th></tr></thead><tbody id="roomsBody"></tbody></table></div></div>
+  <div id="questionsTab" class="tab-panel card table-card"><div class="table-wrap"><table><thead><tr><th>ข้อ</th><th>ประเภท</th><th>เรื่อง</th><th>คำถาม</th><th>ตอบแล้ว</th><th>ตอบถูก</th><th>% ถูก</th></tr></thead><tbody id="questionsBody"></tbody></table></div></div>
+  <div id="settingsTab" class="tab-panel card settings-card"><h3>ควบคุมการสอบ</h3><div class="time-policy"><b>เวลามาตรฐาน: <span id="adminTimeLimit">60</span> นาที</b><p>เมื่อครบเวลา ระบบแจ้งเตือนนักเรียนแต่ไม่บังคับส่ง และบันทึกเวลาที่เกินในรายงาน</p></div><div class="setting-row"><div><b>เปิดรับการสอบ</b><p>ปิดเพื่อไม่ให้นักเรียนเข้าสอบหรือเริ่มข้อสอบใหม่</p></div><label class="switch"><input id="examOpenToggle" type="checkbox"><span></span></label></div><div class="setting-row"><div><b>แสดงคะแนนหลังส่ง</b><p>กำหนดว่านักเรียนจะเห็นคะแนนทันทีหลังส่งหรือไม่</p></div><label class="switch"><input id="showScoreToggle" type="checkbox"><span></span></label></div><div id="settingsMsg" class="message"></div></div>
+</section>
+</main>
+
+<div id="timeWarningModal" class="modal hidden"><div class="modal-card time-warning-card"><div class="time-warning-icon">⏱</div><div class="eyebrow">TIME NOTICE</div><h3>ครบเวลามาตรฐาน 60 นาทีแล้ว</h3><p>คุณยังสามารถทำข้อสอบต่อได้ ระบบจะไม่ส่งข้อสอบให้อัตโนมัติ แต่เวลาที่เกิน 60 นาทีจะถูกบันทึกในรายงานสำหรับ Admin</p><button id="continueAfterTimeBtn" class="btn primary">รับทราบและทำข้อสอบต่อ</button></div></div>
+
+<div id="detailModal" class="modal hidden"><div class="modal-card"><div class="modal-head"><div><div class="eyebrow">ANSWER REPORT</div><h3 id="detailTitle">รายละเอียดคำตอบ</h3></div><button id="closeDetailBtn" class="btn ghost">ปิด</button></div><div id="detailSummary" class="modal-summary"></div><div id="detailAnswers" class="answer-report"></div></div></div>
+
+<footer>ระบบสอบออนไลน์ ม.4 · โรงเรียนบ้านบึง “อุตสาหกรรมนุเคราะห์”</footer>
+<script>
+
+const API='https://ckiltjhcvxriwjfreqfz.supabase.co/functions/v1/m4-programming-exam-api';
+const $=id=>document.getElementById(id);
+const views=['loginView','startView','examView','resultView','adminLoginView','adminView'];
+let meta=null;
+let studentToken=sessionStorage.getItem('m4ExamStudentToken')||'';
+let adminToken=sessionStorage.getItem('m4ExamAdminToken')||'';
+let student=null,attempt=null,questions=[],answers=new Map(),current=0,saveTimer=null;
+let adminData=null,roomChart=null,scoreChart=null,examTimerInterval=null;
+const show=id=>{views.forEach(v=>$(v).classList.toggle('active',v===id));window.scrollTo({top:0,behavior:'smooth'})};
+const esc=v=>String(v??'').replace(/[&<>"']/g,m=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[m]));
+const msg=(id,t,type='')=>{const e=$(id);if(!e)return;e.textContent=t||'';e.className='message'+(type?' '+type:'')};
+async function api(path,{method='GET',body,token}={}){const r=await fetch(API+path,{method,headers:{'Content-Type':'application/json',...(token?{Authorization:'Bearer '+token}:{})},body:body?JSON.stringify(body):undefined});const j=await r.json().catch(()=>({}));if(!r.ok)throw Object.assign(new Error(j.error||'เกิดข้อผิดพลาด'),{data:j,status:r.status});return j}
+function formatDuration(sec){sec=Math.max(0,Number(sec)||0);const h=Math.floor(sec/3600),m=Math.floor((sec%3600)/60),s=Math.floor(sec%60);return[h,m,s].map(x=>String(x).padStart(2,'0')).join(':')}
+function formatShort(sec){sec=Math.max(0,Math.floor(Number(sec)||0));const h=Math.floor(sec/3600),m=Math.floor((sec%3600)/60),s=sec%60;if(h>0)return h+' ชม. '+m+' นาที '+s+' วินาที';if(m>0)return m+' นาที '+s+' วินาที';return s+' วินาที'}
+function hashSeed(str){let h=2166136261>>>0;for(let i=0;i<str.length;i++){h^=str.charCodeAt(i);h=Math.imul(h,16777619)}return h>>>0}
+function mulberry32(a){return function(){let t=a+=0x6D2B79F5;t=Math.imul(t^t>>>15,t|1);t^=t+Math.imul(t^t>>>7,t|61);return((t^t>>>14)>>>0)/4294967296}}
+function seededShuffle(items,seedText){const out=[...items],rand=mulberry32(hashSeed(seedText));for(let i=out.length-1;i>0;i--){const j=Math.floor(rand()*(i+1));[out[i],out[j]]=[out[j],out[i]]}return out}
+function prepareQuestions(raw,attemptId){const mcq=(raw||[]).filter(q=>q.section==='mcq').map(q=>({...q,_choiceOrder:seededShuffle(Object.keys(q.choices||{}),attemptId+':choice:'+q.id)}));const fill=(raw||[]).filter(q=>q.section==='fill').sort((a,b)=>a.question_no-b.question_no);return[...seededShuffle(mcq,attemptId+':mcq-order'),...fill]}
+async function loadMeta(){meta=await api('/meta');$('loginRoom').innerHTML=(meta.rooms||[]).map(r=>'<option value="'+r+'">ม.4/'+r+'</option>').join('')}
+function identityHtml(s){return '<div><span>ชื่อ–สกุล</span><b>'+esc(s.name)+'</b></div><div><span>ห้อง</span><b>ม.4/'+esc(s.room)+'</b></div><div><span>เลขที่</span><b>'+esc(s.seat_number??'-')+'</b></div><div><span>เลขประจำตัว</span><b>'+esc(s.student_number)+'</b></div>'}
+function stopExamClock(){if(examTimerInterval){clearInterval(examTimerInterval);examTimerInterval=null}}
+function updateExamClock(){if(!attempt?.started_at)return;const elapsed=Math.max(0,Math.floor((Date.now()-new Date(attempt.started_at).getTime())/1000));const limit=Number(attempt.time_limit_seconds||meta?.time_limit_minutes*60||3600);const timer=$('examTimer'),textEl=$('timerText'),note=$('timerNote');textEl.textContent=formatDuration(elapsed);if(elapsed>=limit){const over=elapsed-limit;timer.classList.add('overtime');note.textContent='เกินเวลามาตรฐาน '+formatShort(over)+' · ยังทำต่อได้';const warnKey='m4ExamTimeWarned:'+attempt.id;if(!sessionStorage.getItem(warnKey)){sessionStorage.setItem(warnKey,'1');$('timeWarningModal').classList.remove('hidden')}}else{timer.classList.remove('overtime');note.textContent='เวลามาตรฐาน '+Math.round(limit/60)+' นาที · เหลือ '+formatShort(limit-elapsed)}}
+function startExamClock(){stopExamClock();updateExamClock();examTimerInterval=setInterval(updateExamClock,1000)}
+$('continueAfterTimeBtn').onclick=()=>$('timeWarningModal').classList.add('hidden');
+$('timeWarningModal').onclick=e=>{if(e.target.id==='timeWarningModal')$('timeWarningModal').classList.add('hidden')};
+$('adminEntryBtn').onclick=()=>show(adminToken?'adminView':'adminLoginView');$('backHomeBtn').onclick=()=>show('loginView');
+$('loginForm').onsubmit=async e=>{e.preventDefault();msg('loginMsg','กำลังตรวจสอบข้อมูล...');try{const j=await api('/student/login',{method:'POST',body:{room:+$('loginRoom').value,student_number:$('loginStudentNumber').value.trim()}});studentToken=j.token;sessionStorage.setItem('m4ExamStudentToken',studentToken);student=j.student;attempt=j.attempt;$('identityCard').innerHTML=identityHtml(student);$('startExamBtn').textContent=attempt?.status==='started'?'ทำข้อสอบต่อ':'เริ่มทำข้อสอบ';if(attempt?.status==='submitted'){showResult({score:j.show_score_after_submit?attempt.score:null,mcq_score:j.show_score_after_submit?attempt.mcq_score:null,fill_score:j.show_score_after_submit?attempt.fill_score:null,show_score:j.show_score_after_submit,duration_seconds:attempt.duration_seconds,exceeded_time_limit:attempt.exceeded_time_limit,overtime_seconds:attempt.overtime_seconds})}else show('startView');msg('loginMsg','')}catch(e2){msg('loginMsg',e2.message,'error')}};
+async function studentLogout(){stopExamClock();try{if(studentToken)await api('/student/logout',{method:'POST',token:studentToken})}catch{}studentToken='';student=null;attempt=null;questions=[];answers.clear();sessionStorage.removeItem('m4ExamStudentToken');$('loginStudentNumber').value='';show('loginView')}
+$('studentLogoutBtn').onclick=studentLogout;$('resultLogoutBtn').onclick=studentLogout;
+$('startExamBtn').onclick=async()=>{msg('startMsg','กำลังเตรียมข้อสอบ...');try{const j=await api('/student/start',{method:'POST',token:studentToken});attempt=j.attempt;attempt.time_limit_seconds=Number(j.time_limit_seconds||attempt.time_limit_seconds||3600);questions=prepareQuestions(j.questions||[],attempt.id);answers=new Map((j.answers||[]).map(a=>[Number(a.question_id),a.answer_text??'']));current=0;$('studentMini').innerHTML='<b>'+esc(j.student.name)+'</b><br><small>ม.4/'+esc(j.student.room)+' · เลขที่ '+esc(j.student.seat_number??'-')+' · '+esc(j.student.student_number)+'</small>';buildNav();renderQuestion();show('examView');startExamClock();msg('startMsg','')}catch(e){msg('startMsg',e.message,'error')}};
+function buildNav(){$('questionNav').innerHTML=questions.map((q,i)=>'<button class="qnav" data-i="'+i+'" title="'+(q.section==='fill'?'เติมคำ':'ปรนัย')+'">'+(i+1)+'</button>').join('');document.querySelectorAll('.qnav').forEach(b=>b.onclick=()=>{current=+b.dataset.i;renderQuestion()})}
+function updateNav(){document.querySelectorAll('.qnav').forEach((b,i)=>{const q=questions[i],a=String(answers.get(Number(q.id))??'').trim();b.classList.toggle('answered',a!=='');b.classList.toggle('current',i===current)});const done=questions.filter(q=>String(answers.get(Number(q.id))??'').trim()!=='').length;$('progressBar').style.width=(done/questions.length*100)+'%';$('progressText').textContent='ตอบแล้ว '+done+' / '+questions.length+' ข้อ'}
+function renderQuestion(){const q=questions[current];if(!q)return;$('questionNumber').textContent='ข้อ '+(current+1)+' / '+questions.length;$('questionTopic').textContent=q.topic;$('questionPoints').textContent=q.points+' คะแนน'+(q.section==='fill'?' · เติมคำในโค้ด':'');$('questionPrompt').textContent=q.prompt;const code=$('questionCode');if(q.code){code.textContent=q.code;code.classList.remove('hidden')}else code.classList.add('hidden');const a=String(answers.get(Number(q.id))??'');if(q.section==='mcq'){const labels=['ก','ข','ค','ง'];const keys=q._choiceOrder||Object.keys(q.choices||{});$('answerArea').innerHTML='<div class="choices">'+keys.map((k,i)=>'<label class="choice '+(a===k?'selected':'')+'"><input type="radio" name="choice" value="'+esc(k)+'" '+(a===k?'checked':'')+'><span class="choice-key">'+(labels[i]||String(i+1))+'.</span><span>'+esc(q.choices[k])+'</span></label>').join('')+'</div>';document.querySelectorAll('input[name=choice]').forEach(r=>r.onchange=async()=>{answers.set(Number(q.id),r.value);document.querySelectorAll('.choice').forEach(x=>x.classList.toggle('selected',x.querySelector('input').checked));updateNav();await saveAnswer(q.id,r.value)})}else{$('answerArea').innerHTML='<div class="fill-wrap"><label>คำตอบที่เติมในช่องว่าง<input id="fillAnswer" class="fill-input" autocomplete="off" spellcheck="false" value="'+esc(a)+'" placeholder="พิมพ์คำหรือเครื่องหมายที่หายไป"></label></div>';const input=$('fillAnswer');input.oninput=()=>{answers.set(Number(q.id),input.value);updateNav();clearTimeout(saveTimer);$('saveState').textContent='กำลังพิมพ์...';saveTimer=setTimeout(()=>saveAnswer(q.id,input.value),500)}}$('prevBtn').disabled=current===0;$('nextBtn').textContent=current===questions.length-1?'ตรวจคำตอบก่อนส่ง':'ข้อต่อไป →';updateNav();$('saveState').textContent=''}
+async function saveAnswer(qid,val){$('saveState').textContent='กำลังบันทึก...';try{await api('/student/answer',{method:'POST',token:studentToken,body:{question_id:qid,answer_text:val}});$('saveState').textContent='บันทึกแล้ว ✓'}catch(e){$('saveState').textContent='บันทึกไม่สำเร็จ: '+e.message}}
+$('prevBtn').onclick=()=>{if(current>0){current--;renderQuestion()}};$('nextBtn').onclick=()=>{if(current<questions.length-1){current++;renderQuestion()}else{const firstBlank=questions.findIndex(q=>!String(answers.get(Number(q.id))??'').trim());if(firstBlank>=0){current=firstBlank;renderQuestion();alert('ยังมีข้อที่ไม่ได้ตอบ ระบบพามาที่ข้อแรกที่ยังว่าง')}else $('submitExamBtn').scrollIntoView({behavior:'smooth'})}};
+$('submitExamBtn').onclick=async()=>{const blanks=questions.filter(q=>!String(answers.get(Number(q.id))??'').trim()).length;if(!confirm(blanks?'ยังมี '+blanks+' ข้อที่ไม่ได้ตอบ ต้องการส่งข้อสอบหรือไม่?':'ยืนยันส่งข้อสอบ? เมื่อส่งแล้วจะไม่สามารถแก้ไขได้'))return;$('submitExamBtn').disabled=true;$('submitExamBtn').textContent='กำลังตรวจและบันทึกคะแนน...';try{const j=await api('/student/submit',{method:'POST',token:studentToken});stopExamClock();showResult(j)}catch(e){alert(e.message);$('submitExamBtn').disabled=false;$('submitExamBtn').textContent='ส่งข้อสอบ'}};
+function showResult(j){stopExamClock();$('resultIdentity').textContent=student?student.name+' · ม.4/'+student.room+' · เลขที่ '+(student.seat_number??'-'):'';const timing=j.duration_seconds!=null?'<div><b>'+formatDuration(j.duration_seconds)+'</b><span>เวลาที่ใช้'+(j.exceeded_time_limit?' · เกิน '+formatShort(j.overtime_seconds):'')+'</span></div>':'';if(j.show_score===false||j.score==null)$('scoreBox').innerHTML='<div><b>ส่งแล้ว</b><span>ครูจะเป็นผู้แจ้งผลคะแนน</span></div>'+timing;else $('scoreBox').innerHTML='<div><b>'+Number(j.score).toFixed(1)+'</b><span>คะแนนรวม / 20</span></div><div><b>'+Number(j.mcq_score).toFixed(1)+'</b><span>ปรนัย / 15</span></div><div><b>'+Number(j.fill_score).toFixed(1)+'</b><span>เติมคำ / 5</span></div>'+timing;show('resultView')}
+window.addEventListener('beforeunload',e=>{if($('examView').classList.contains('active')){e.preventDefault();e.returnValue=''}});
+$('adminLoginForm').onsubmit=async e=>{e.preventDefault();msg('adminLoginMsg','กำลังเข้าสู่ระบบ...');try{const j=await api('/admin/login',{method:'POST',body:{pin:$('adminPin').value}});adminToken=j.token;sessionStorage.setItem('m4ExamAdminToken',adminToken);$('adminPin').value='';await refreshAdmin();show('adminView');msg('adminLoginMsg','')}catch(e2){msg('adminLoginMsg',e2.message,'error')}};
+$('adminLogoutBtn').onclick=async()=>{try{if(adminToken)await api('/admin/logout',{method:'POST',token:adminToken})}catch{}adminToken='';sessionStorage.removeItem('m4ExamAdminToken');show('adminLoginView')};$('refreshAdminBtn').onclick=refreshAdmin;
+async function refreshAdmin(){adminData=await api('/admin/dashboard',{token:adminToken});renderAdmin();$('adminUpdated').textContent='อัปเดตล่าสุด '+new Date().toLocaleString('th-TH')}
+function renderAdmin(){const t=adminData.totals,s=adminData.score_stats;const k=[['นักเรียน ม.4',t.roster],['ส่งข้อสอบแล้ว',t.submitted],['กำลังทำ',t.started],['เกิน 60 นาที',t.overtime||0],['คะแนนเฉลี่ย',s.average.toFixed(2)]];$('adminKpis').innerHTML=k.map(([a,b])=>'<div class="kpi"><b>'+b+'</b><span>'+a+'</span></div>').join('');const rooms=adminData.room_stats||[];$('studentRoomFilter').innerHTML='<option value="">ทุกห้อง</option>'+rooms.map(r=>'<option value="'+r.room+'">ม.4/'+r.room+'</option>').join('');renderStudents();$('roomsBody').innerHTML=rooms.map(r=>'<tr><td><b>ม.4/'+r.room+'</b></td><td>'+r.total+'</td><td>'+r.not_started+'</td><td>'+r.started+'</td><td>'+r.submitted+'</td><td class="'+(r.overtime?'overtime-text':'')+'">'+(r.overtime||0)+'</td><td>'+Number(r.avg_score).toFixed(2)+'</td></tr>').join('');$('questionsBody').innerHTML=(adminData.question_stats||[]).map(q=>'<tr><td>'+q.question_no+'</td><td>'+(q.section==='mcq'?'ปรนัย':'เติมคำ')+'</td><td>'+esc(q.topic)+'</td><td>'+esc(q.prompt)+'</td><td>'+q.answered+'</td><td>'+q.correct+'</td><td>'+q.correct_pct+'%</td></tr>').join('');$('examOpenToggle').checked=!!adminData.settings.is_open;$('showScoreToggle').checked=!!adminData.settings.show_score_after_submit;if($('adminTimeLimit'))$('adminTimeLimit').textContent=adminData.settings.time_limit_minutes||60;renderCharts()}
+function renderStudents(){const room=$('studentRoomFilter').value,status=$('studentStatusFilter').value,q=$('studentSearch').value.trim().toLowerCase();const rows=(adminData.students||[]).filter(s=>(!room||String(s.room)===room)&&(!status||s.status===status)&&(!q||(s.student_number+' '+s.name).toLowerCase().includes(q)));$('studentsBody').innerHTML=rows.map(s=>'<tr><td>ม.4/'+s.room+'</td><td>'+esc(s.seat_number??'-')+'</td><td>'+esc(s.student_number)+'</td><td><b>'+esc(s.name)+'</b></td><td><span class="badge '+s.status+'">'+(s.status==='submitted'?'ส่งแล้ว':s.status==='started'?'กำลังทำ':'ยังไม่เริ่ม')+'</span></td><td class="time-cell">'+(s.duration_seconds==null?'-':formatDuration(s.duration_seconds))+'</td><td>'+(s.exceeded_time_limit?'<span class="overtime-text">+'+formatShort(s.overtime_seconds)+'</span>':'-')+'</td><td>'+(s.mcq_score==null?'-':Number(s.mcq_score).toFixed(1))+'</td><td>'+(s.fill_score==null?'-':Number(s.fill_score).toFixed(1))+'</td><td>'+(s.score==null?'-':'<b>'+Number(s.score).toFixed(1)+'</b>')+'</td><td>'+(s.attempt_id?'<button class="detail-btn" data-attempt="'+s.attempt_id+'">ดูคำตอบ</button>':'-')+'</td></tr>').join('')||'<tr><td colspan="11">ไม่พบข้อมูล</td></tr>';document.querySelectorAll('.detail-btn').forEach(b=>b.onclick=()=>openAttempt(b.dataset.attempt))}
+$('studentRoomFilter').onchange=renderStudents;$('studentStatusFilter').onchange=renderStudents;$('studentSearch').oninput=renderStudents;
+function renderCharts(){const rooms=adminData.room_stats||[],labels=rooms.map(r=>'ห้อง '+r.room);roomChart?.destroy();roomChart=new Chart($('roomChart'),{type:'bar',data:{labels,datasets:[{label:'ยังไม่เริ่ม',data:rooms.map(r=>r.not_started)},{label:'กำลังทำ',data:rooms.map(r=>r.started)},{label:'ส่งแล้ว',data:rooms.map(r=>r.submitted)}]},options:{responsive:true,maintainAspectRatio:false,scales:{x:{stacked:true},y:{stacked:true,beginAtZero:true}},plugins:{legend:{position:'bottom'}}}});const scores=(adminData.students||[]).filter(x=>x.score!=null).map(x=>Number(x.score)),bins=[0,0,0,0];scores.forEach(x=>{if(x<5)bins[0]++;else if(x<10)bins[1]++;else if(x<15)bins[2]++;else bins[3]++});scoreChart?.destroy();scoreChart=new Chart($('scoreChart'),{type:'bar',data:{labels:['0–4.5','5–9.5','10–14.5','15–20'],datasets:[{label:'จำนวนนักเรียน',data:bins}]},options:{responsive:true,maintainAspectRatio:false,plugins:{legend:{display:false}},scales:{y:{beginAtZero:true}}}})}
+async function openAttempt(id){try{const j=await api('/admin/attempt?id='+encodeURIComponent(id),{token:adminToken});$('detailTitle').textContent=j.student.name+' · ม.4/'+j.student.room+' เลขที่ '+(j.student.seat_number??'-');const dur=j.attempt.duration_seconds==null?'-':formatDuration(j.attempt.duration_seconds);const over=j.attempt.exceeded_time_limit?' · <span class="overtime-text">เกิน '+formatShort(j.attempt.overtime_seconds)+'</span>':'';$('detailSummary').innerHTML='เลขประจำตัว <b>'+esc(j.student.student_number)+'</b> · คะแนน <b>'+(j.attempt.score??'-')+' / 20</b> · ปรนัย '+(j.attempt.mcq_score??'-')+' /15 · เติมคำ '+(j.attempt.fill_score??'-')+' /5 · เวลาที่ใช้ <b>'+dur+'</b>'+over;$('detailAnswers').innerHTML=j.answers.map(a=>'<div class="report-item '+(a.is_correct===true?'correct':a.is_correct===false?'wrong':'')+'"><h4>ข้อ '+a.question_no+' · '+esc(a.topic)+' · '+a.points+' คะแนน</h4><div>'+esc(a.prompt)+'</div>'+(a.code?'<pre class="code">'+esc(a.code)+'</pre>':'')+'<div class="report-answer">คำตอบนักเรียน: <b>'+esc(a.answer_text||'(ไม่ตอบ)')+'</b><br>เฉลย: <b>'+esc(a.correct_answer)+'</b> · ได้ '+(a.points_awarded??0)+' คะแนน</div></div>').join('');$('detailModal').classList.remove('hidden')}catch(e){alert(e.message)}}
+$('closeDetailBtn').onclick=()=>$('detailModal').classList.add('hidden');$('detailModal').onclick=e=>{if(e.target.id==='detailModal')$('detailModal').classList.add('hidden')};
+document.querySelectorAll('.tab').forEach(b=>b.onclick=()=>{document.querySelectorAll('.tab').forEach(x=>x.classList.remove('active'));document.querySelectorAll('.tab-panel').forEach(x=>x.classList.remove('active'));b.classList.add('active');$(b.dataset.tab+'Tab').classList.add('active')});
+async function updateSettings(){msg('settingsMsg','กำลังบันทึก...');try{const j=await api('/admin/settings',{method:'POST',token:adminToken,body:{is_open:$('examOpenToggle').checked,show_score_after_submit:$('showScoreToggle').checked}});adminData.settings=j.settings;msg('settingsMsg','บันทึกการตั้งค่าแล้ว','success')}catch(e){msg('settingsMsg',e.message,'error')}}
+$('examOpenToggle').onchange=updateSettings;$('showScoreToggle').onchange=updateSettings;
+$('exportBtn').onclick=()=>{if(!adminData||typeof XLSX==='undefined')return;const studentRows=adminData.students.map(s=>({'ห้อง':'ม.4/'+s.room,'เลขที่':s.seat_number,'เลขประจำตัวนักเรียน':s.student_number,'ชื่อ-สกุล':s.name,'สถานะ':s.status==='submitted'?'ส่งแล้ว':s.status==='started'?'กำลังทำ':'ยังไม่เริ่ม','เวลาที่ใช้':s.duration_seconds==null?'':formatDuration(s.duration_seconds),'เกินเวลามาตรฐาน':s.exceeded_time_limit?'ใช่':'ไม่','เวลาเกิน':s.exceeded_time_limit?formatDuration(s.overtime_seconds):'','ปรนัย /15':s.mcq_score,'เติมคำ /5':s.fill_score,'คะแนนรวม /20':s.score,'เริ่มทำ':s.started_at?new Date(s.started_at).toLocaleString('th-TH'):'','ส่งข้อสอบ':s.submitted_at?new Date(s.submitted_at).toLocaleString('th-TH'):''}));const roomRows=adminData.room_stats.map(r=>({'ห้อง':'ม.4/'+r.room,'ทั้งหมด':r.total,'ยังไม่เริ่ม':r.not_started,'กำลังทำ':r.started,'ส่งแล้ว':r.submitted,'เกินเวลา':r.overtime||0,'คะแนนเฉลี่ย':r.avg_score}));const qRows=adminData.question_stats.map(q=>({'ข้ออ้างอิง':q.question_no,'ประเภท':q.section==='mcq'?'ปรนัย':'เติมคำ','เรื่อง':q.topic,'คำถาม':q.prompt,'ตอบแล้ว':q.answered,'ตอบถูก':q.correct,'% ตอบถูก':q.correct_pct}));const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(studentRows),'ผลรายบุคคล');XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(roomRows),'สรุปรายห้อง');XLSX.utils.book_append_sheet(wb,XLSX.utils.json_to_sheet(qRows),'สถิติรายข้อ');XLSX.writeFile(wb,'ผลสอบออนไลน์_M4_Programming.xlsx')};
+(async()=>{try{await loadMeta()}catch(e){msg('loginMsg','ไม่สามารถเชื่อมต่อระบบสอบ: '+e.message,'error')}show('loginView')})();
+
+</script>
+</body>
+</html>
